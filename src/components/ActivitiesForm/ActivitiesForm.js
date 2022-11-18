@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { dataContext } from "../Context/DataContext";
 
 const ActivitiesForm = () => {
   const initialStateValues = {
@@ -6,6 +7,7 @@ const ActivitiesForm = () => {
     description: "",
   };
   const [values, setValues] = useState(initialStateValues);
+  const { prueba } = useContext(dataContext);
 
   const handleValueChange = (e) => {
     const { name, value } = e.target;
@@ -15,6 +17,7 @@ const ActivitiesForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(values);
+    prueba();
   };
   return (
     <>

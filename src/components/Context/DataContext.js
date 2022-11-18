@@ -1,11 +1,13 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext } from "react";
 
 export const dataContext = createContext();
 
 const DataProvider = ({ children }) => {
-  const [data, setData] = useState([]);
+  const prueba = () => {
+    console.log("probando");
+  };
 
-  return <dataContext.Provider value={{}}>{children}</dataContext.Provider>;
+  return <dataContext.Provider value={{ prueba }}>{children}</dataContext.Provider>;
 };
 
 export default DataProvider;

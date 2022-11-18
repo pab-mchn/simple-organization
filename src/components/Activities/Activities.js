@@ -1,4 +1,3 @@
-import React from "react";
 import ActivitiesForm from "../ActivitiesForm/ActivitiesForm";
 
 const Activities = () => {
