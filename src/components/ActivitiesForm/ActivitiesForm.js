@@ -17,11 +17,19 @@ const ActivitiesForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addOrEditActivitie(values);
+    console.log(values);
+    setValues({ ...initialStateValues });
   };
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input id='input' type='text' placeholder='Activitie name' name='name' onChange={handleValueChange}></input>
+        <input
+          id='input'
+          type='text'
+          placeholder='Activitie name'
+          name='name'
+          value={values.name}
+          onChange={handleValueChange}></input>
         <br />
         <textarea
           id='input'
@@ -30,6 +38,7 @@ const ActivitiesForm = () => {
           rows={5}
           cols={25}
           name='description'
+          value={values.description}
           onChange={handleValueChange}></textarea>
         <button>Save Activitie</button>
       </form>

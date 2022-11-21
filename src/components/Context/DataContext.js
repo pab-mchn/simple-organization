@@ -6,8 +6,7 @@ export const dataContext = createContext();
 
 const DataProvider = ({ children }) => {
   const addOrEditActivitie = async (activitieObject) => {
-    addDoc(collection(db, "activities"), activitieObject);
-    console.log(activitieObject);
+    await addDoc(collection(db, "activities"), activitieObject);
   };
 
   return <dataContext.Provider value={{ addOrEditActivitie }}>{children}</dataContext.Provider>;
