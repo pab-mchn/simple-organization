@@ -20,6 +20,10 @@ const Activities = () => {
 
   const deleteActivite = (id) => {
     deleteDoc(doc(db, "activities", id));
+    const cleanActivitie = [...activitie];
+    cleanActivitie.splice(id, 1);
+    setActivitie(cleanActivitie);
+    console.log(activitie);
   };
   return (
     <>
@@ -31,6 +35,7 @@ const Activities = () => {
             <h2>{act.name}</h2>
             <h4>{act.description}</h4>
             <h3 onClick={() => deleteActivite(act.id)}>❌</h3>
+            <h3>✏️</h3>
           </div>
         ))}
       </div>
