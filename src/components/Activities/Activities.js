@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ActivitiesForm from "../ActivitiesForm/ActivitiesForm";
 
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../Firebase/Firebase";
 
 const Activities = () => {
@@ -12,12 +12,15 @@ const Activities = () => {
       const activitiesDocs = [];
       querySnapshot.forEach((doc) => {
         activitiesDocs.push({ ...doc.data(), id: doc.id });
-        console.log(activitiesDocs);
+
         setActivitie(activitiesDocs);
-        console.log(activitie);
       });
     });
   }, []);
+
+  const deleteActivite = (id) => {
+    deleteDoc(doc(db, "activities", id));
+  };
   return (
     <>
       <ActivitiesForm />
@@ -27,6 +30,7 @@ const Activities = () => {
           <div key={act.id}>
             <h2>{act.name}</h2>
             <h4>{act.description}</h4>
+            <h3 onClick={() => deleteActivite(act.id)}>❌</h3>
           </div>
         ))}
       </div>
