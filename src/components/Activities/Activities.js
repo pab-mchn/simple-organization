@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ActivitiesForm from "../ActivitiesForm/ActivitiesForm";
+import { dataContext } from "../Context/DataContext";
 
 import { collection, onSnapshot, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../Firebase/Firebase";
 
 const Activities = () => {
+  const { setCurrentId } = useContext(dataContext);
   const [activitie, setActivitie] = useState([]);
 
   useEffect(() => {
@@ -19,11 +21,11 @@ const Activities = () => {
   }, []);
 
   const deleteActivite = (id) => {
-    deleteDoc(doc(db, "activities", id));
     const cleanActivitie = [...activitie];
     cleanActivitie.splice(id, 1);
     setActivitie(cleanActivitie);
     console.log(activitie);
+    deleteDoc(doc(db, "activities", id));
   };
   return (
     <>
@@ -35,7 +37,7 @@ const Activities = () => {
             <h2>{act.name}</h2>
             <h4>{act.description}</h4>
             <h3 onClick={() => deleteActivite(act.id)}>❌</h3>
-            <h3>✏️</h3>
+            <h3 onClick={() => setCurrentId(act.id)}>✏️</h3>
           </div>
         ))}
       </div>

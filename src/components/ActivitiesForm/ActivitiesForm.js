@@ -1,13 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { dataContext } from "../Context/DataContext";
+import { updateDoc, doc, getDoc } from "firebase/firestore";
+import { db } from "../../Firebase/Firebase";
+
 const ActivitiesForm = () => {
   const initialStateValues = {
     name: "",
     description: "",
   };
 
+  const { addOrEditActivitie, currentId } = useContext(dataContext);
   const [values, setValues] = useState(initialStateValues);
-  const { addOrEditActivitie } = useContext(dataContext);
 
   const handleValueChange = (e) => {
     const { name, value } = e.target;
@@ -17,9 +20,24 @@ const ActivitiesForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addOrEditActivitie(values);
-    console.log(values);
     setValues({ ...initialStateValues });
   };
+
+  const getActivitieById = async (id) => {
+    console.log(id);
+
+    const docActivitieId = doc(db, "activities", id);
+    const docActivitieData = await getDoc(docActivitieId);
+    setValues({ ...docActivitieData.data() });
+  };
+
+  useEffect(() => {
+    if (currentId === "") {
+      setValues({ ...initialStateValues });
+    } else {
+      getActivitieById(currentId);
+    }
+  }, [currentId]);
   return (
     <>
       <form onSubmit={handleSubmit}>
