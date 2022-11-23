@@ -12,6 +12,7 @@ const DataProvider = ({ children }) => {
       await addDoc(collection(db, "activities"), activitieObject);
     } else {
       await updateDoc(doc(db, "activities", currentId), activitieObject);
+      setCurrentId("");
     }
   };
 
