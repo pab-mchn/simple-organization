@@ -21,7 +21,8 @@ const ActivitiesForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addOrEditActivitie(values);
+    values.name === "" ? alert("name missed") : addOrEditActivitie(values);
+
     setValues({ ...initialStateValues });
   };
 
