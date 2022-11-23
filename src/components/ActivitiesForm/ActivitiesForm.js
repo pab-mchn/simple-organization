@@ -24,8 +24,6 @@ const ActivitiesForm = () => {
   };
 
   const getActivitieById = async (id) => {
-    console.log(id);
-
     const docActivitieId = doc(db, "activities", id);
     const docActivitieData = await getDoc(docActivitieId);
     setValues({ ...docActivitieData.data() });
@@ -58,7 +56,7 @@ const ActivitiesForm = () => {
           name='description'
           value={values.description}
           onChange={handleValueChange}></textarea>
-        <button>Save Activitie</button>
+        <button>{currentId === "" ? "create" : "update"}</button>
       </form>
     </>
   );

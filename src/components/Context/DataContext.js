@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../Firebase/Firebase";
 
 export const dataContext = createContext();
@@ -8,7 +8,11 @@ const DataProvider = ({ children }) => {
   const [currentId, setCurrentId] = useState("");
 
   const addOrEditActivitie = async (activitieObject) => {
-    await addDoc(collection(db, "activities"), activitieObject);
+    if (currentId === "") {
+      await addDoc(collection(db, "activities"), activitieObject);
+    } else {
+      await updateDoc(doc(db, "activities", currentId), activitieObject);
+    }
   };
 
   return (
