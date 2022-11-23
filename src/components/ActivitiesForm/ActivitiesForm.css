@@ -1,0 +1,32 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin-left: 80px;
+  margin-right: 80px;
+}
+.formName {
+  padding: 10px;
+  height: 20px;
+}
+
+.formDescription {
+  height: 100px;
+}
+
+.formButton {
+  color: white;
+  padding: 12px 24px;
+  border-radius: 4px;
+  border: none;
+  background: #24a068;
+  transition: background 0.3s ease;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.formButton:hover {
+  background: #1bcb7f;
+  color: white;
+}

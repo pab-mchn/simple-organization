@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { dataContext } from "../Context/DataContext";
-import { updateDoc, doc, getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../Firebase/Firebase";
+
+import "./ActivitiesForm.css";
 
 const ActivitiesForm = () => {
   const initialStateValues = {
@@ -40,6 +42,7 @@ const ActivitiesForm = () => {
     <>
       <form onSubmit={handleSubmit}>
         <input
+          className='formName'
           id='input'
           type='text'
           placeholder='Activitie name'
@@ -47,7 +50,8 @@ const ActivitiesForm = () => {
           value={values.name}
           onChange={handleValueChange}></input>
         <br />
-        <textarea
+        <input
+          className='formDescription'
           id='input'
           type='text'
           placeholder='Activitie description'
@@ -55,8 +59,8 @@ const ActivitiesForm = () => {
           cols={25}
           name='description'
           value={values.description}
-          onChange={handleValueChange}></textarea>
-        <button>{currentId === "" ? "create" : "update"}</button>
+          onChange={handleValueChange}></input>
+        <button className='formButton'>{currentId === "" ? "Create" : "Update"}</button>
       </form>
     </>
   );

@@ -5,6 +5,8 @@ import { dataContext } from "../Context/DataContext";
 import { collection, onSnapshot, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../Firebase/Firebase";
 
+import "./Activities.css";
+
 const Activities = () => {
   const { setCurrentId } = useContext(dataContext);
   const [activitie, setActivitie] = useState([]);
@@ -29,15 +31,18 @@ const Activities = () => {
   };
   return (
     <>
+      <h1>Personal Organization</h1>
       <ActivitiesForm />
-      <h1>Activities</h1>
-      <div>
+      <h1>{activitie.length === 0 ? "Your activities list is empty..." : " Your Activities"}</h1>
+      <div className='activitiesContainer'>
         {activitie.map((act) => (
-          <div key={act.id}>
+          <div className='activitiesItem' key={act.id}>
             <h2>{act.name}</h2>
             <h4>{act.description}</h4>
-            <h3 onClick={() => deleteActivite(act.id)}>❌</h3>
-            <h3 onClick={() => setCurrentId(act.id)}>✏️</h3>
+            <div className='activitiesItem-buttons'>
+              <h3 onClick={() => deleteActivite(act.id)}>❌</h3>
+              <h3 onClick={() => setCurrentId(act.id)}>✏️</h3>
+            </div>
           </div>
         ))}
       </div>
