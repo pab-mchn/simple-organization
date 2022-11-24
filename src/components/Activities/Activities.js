@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import ActivitiesForm from "../ActivitiesForm/ActivitiesForm";
 import { dataContext } from "../Context/DataContext";
-
 import { collection, onSnapshot, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../Firebase/Firebase";
 
@@ -37,10 +36,16 @@ const Activities = () => {
   return (
     <>
       <ActivitiesForm />
-      <h1>{activitie.length === 0 ? "Your activities list is empty" : " Your Activities"}</h1>
+      <div className='title-container'>
+        <h1>{activitie.length === 0 ? "Your activities list is empty" : " Your Activities"}</h1>
+        <img
+          src='https://imgs.search.brave.com/PielncwEr_ZqEcGO241yQBvd7CEIK3AwfK6H2NwCJic/rs:fit:493:481:1/g:ce/aHR0cHM6Ly9tZWRp/YS50ZW5vci5jb20v/aW1hZ2VzLzdkMjEx/NDBkOTQ5YTNlYTcx/MWQ5Njg2NmE4MzNi/MzFiL3Rlbm9yLmdp/Zg.gif'
+          alt=''
+        />
+      </div>
       <div className='activitie-button-container'>
         <button class='activitie-button' onClick={openOrCloseModal}>
-          A new Activitie
+          +
         </button>
       </div>
       <div className='activitiesContainer'>
