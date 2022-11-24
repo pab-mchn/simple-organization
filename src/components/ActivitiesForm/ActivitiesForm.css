@@ -36,3 +36,58 @@ form {
     margin-right: 20px;
   }
 }
+
+/*modal styles*/
+
+/*modal styles*/
+.modal__bg {
+  position: fixed;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(28, 28, 28, 0.19);
+  backdrop-filter: blur(6px);
+  opacity: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 0.3s;
+  animation-name: modal-video;
+  -webkit-transition: opacity 0.3s ease-out;
+  -moz-transition: opacity 0.3s ease-out;
+  -ms-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+  z-index: 100;
+}
+
+.modal__align {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.modal__content {
+  width: 800px;
+  margin: 10rem 4rem;
+}
+
+.modal__close {
+  cursor: pointer;
+  position: relative;
+  /* top: 75px;
+  right: 41px; */
+  /* background-color: #24a068;
+  border-radius: 50%; */
+  padding: 8px;
+  text-align: center;
+}
+
+.modal__spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

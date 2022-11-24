@@ -8,7 +8,7 @@ import { db } from "../../Firebase/Firebase";
 import "./Activities.css";
 
 const Activities = () => {
-  const { setCurrentId } = useContext(dataContext);
+  const { setCurrentId, openOrCloseModal } = useContext(dataContext);
   const [activitie, setActivitie] = useState([]);
 
   useEffect(() => {
@@ -29,6 +29,11 @@ const Activities = () => {
     console.log(activitie);
     deleteDoc(doc(db, "activities", id));
   };
+
+  const EditActivitie = (id) => {
+    setCurrentId(id);
+    openOrCloseModal();
+  };
   return (
     <>
       <h1>Personal Organization</h1>
@@ -41,7 +46,7 @@ const Activities = () => {
             <h4>{act.description}</h4>
             <div className='activitiesItem-buttons'>
               <h3 onClick={() => deleteActivite(act.id)}>❌</h3>
-              <h3 onClick={() => setCurrentId(act.id)}>✏️</h3>
+              <h3 onClick={() => EditActivitie(act.id)}>✏️</h3>
             </div>
           </div>
         ))}

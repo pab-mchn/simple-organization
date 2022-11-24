@@ -11,7 +11,7 @@ const ActivitiesForm = () => {
     description: "",
   };
 
-  const { addOrEditActivitie, currentId } = useContext(dataContext);
+  const { addOrEditActivitie, currentId, modal, openOrCloseModal } = useContext(dataContext);
   const [values, setValues] = useState(initialStateValues);
 
   const handleValueChange = (e) => {
@@ -41,28 +41,41 @@ const ActivitiesForm = () => {
   }, [currentId]);
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input
-          className='formName'
-          id='input'
-          type='text'
-          placeholder='Activitie name'
-          name='name'
-          value={values.name}
-          onChange={handleValueChange}></input>
-        <br />
-        <input
-          className='formDescription'
-          id='input'
-          type='text'
-          placeholder='Activitie description'
-          rows={5}
-          cols={25}
-          name='description'
-          value={values.description}
-          onChange={handleValueChange}></input>
-        <button className='formButton'>{currentId === "" ? "Create" : "Update"}</button>
-      </form>
+      <button onClick={openOrCloseModal}>🍻</button>
+      {modal ? (
+        <section className='modal__bg'>
+          <div className='modal__align'>
+            <div className='modal__content' modal={modal}>
+              <h3 className='modal__close' arial-label='Close modal' onClick={openOrCloseModal}>
+                ❌
+              </h3>
+              <div className='modal__photo-align'></div>
+              <form onSubmit={handleSubmit}>
+                <input
+                  className='formName'
+                  id='input'
+                  type='text'
+                  placeholder='Activitie name'
+                  name='name'
+                  value={values.name}
+                  onChange={handleValueChange}></input>
+                <br />
+                <input
+                  className='formDescription'
+                  id='input'
+                  type='text'
+                  placeholder='Activitie description'
+                  rows={5}
+                  cols={25}
+                  name='description'
+                  value={values.description}
+                  onChange={handleValueChange}></input>
+                <button className='formButton'>{currentId === "" ? "Create" : "Update"}</button>
+              </form>
+            </div>
+          </div>
+        </section>
+      ) : null}
     </>
   );
 };
