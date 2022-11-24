@@ -1,8 +1,9 @@
 .title-container {
   text-align: center;
+  margin-top: 60px;
 }
 .title-container > img {
-  height: 250px;
+  height: 200px;
   margin-top: 50px;
 }
 h1 {
@@ -16,6 +17,7 @@ h1 {
   flex-wrap: wrap;
   margin-left: 75px;
   margin-right: 75px;
+  margin-top: 50px;
 }
 .activitiesItem {
   background-color: #24a068;

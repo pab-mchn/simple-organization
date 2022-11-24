@@ -4,6 +4,9 @@ import { dataContext } from "../Context/DataContext";
 import { collection, onSnapshot, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../Firebase/Firebase";
 
+import Home from "../Home/Home";
+import Header from "../Header/Header";
+
 import "./Activities.css";
 
 const Activities = () => {
@@ -36,13 +39,7 @@ const Activities = () => {
   return (
     <>
       <ActivitiesForm />
-      <div className='title-container'>
-        <h1>{activitie.length === 0 ? "Your activities list is empty" : " Your Activities"}</h1>
-        <img
-          src='https://imgs.search.brave.com/PielncwEr_ZqEcGO241yQBvd7CEIK3AwfK6H2NwCJic/rs:fit:493:481:1/g:ce/aHR0cHM6Ly9tZWRp/YS50ZW5vci5jb20v/aW1hZ2VzLzdkMjEx/NDBkOTQ5YTNlYTcx/MWQ5Njg2NmE4MzNi/MzFiL3Rlbm9yLmdp/Zg.gif'
-          alt=''
-        />
-      </div>
+      <div className='title-container'>{activitie.length === 0 ? <Home /> : <Header />}</div>
       <div className='activitie-button-container'>
         <button class='activitie-button' onClick={openOrCloseModal}>
           +
