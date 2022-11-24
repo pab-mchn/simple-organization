@@ -36,9 +36,13 @@ const Activities = () => {
   };
   return (
     <>
-      <h1>Personal Organization</h1>
       <ActivitiesForm />
-      <h1>{activitie.length === 0 ? "Your activities list is empty..." : " Your Activities"}</h1>
+      <h1>{activitie.length === 0 ? "Your activities list is empty" : " Your Activities"}</h1>
+      <div className='activitie-button-container'>
+        <button class='activitie-button' onClick={openOrCloseModal}>
+          A new Activitie
+        </button>
+      </div>
       <div className='activitiesContainer'>
         {activitie.map((act) => (
           <div className='activitiesItem' key={act.id}>

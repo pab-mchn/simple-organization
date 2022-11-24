@@ -41,7 +41,6 @@ const ActivitiesForm = () => {
   }, [currentId]);
   return (
     <>
-      <button onClick={openOrCloseModal}>🍻</button>
       {modal ? (
         <section className='modal__bg'>
           <div className='modal__align'>

@@ -22,3 +22,24 @@ h1 {
   display: inline;
   margin: 20px;
 }
+.activitie-button-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.activitie-button {
+  color: white;
+  padding: 12px 80px;
+  border-radius: 20px;
+  background: #24a068;
+  transition: background 0.3s ease;
+  text-decoration: none;
+  border: none;
+  text-align: center;
+}
+
+.activitie-button:hover {
+  background: #1bcb7f;
+  color: white;
+  cursor: pointer;
+}
