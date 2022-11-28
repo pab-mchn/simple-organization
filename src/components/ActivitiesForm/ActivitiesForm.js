@@ -24,6 +24,7 @@ const ActivitiesForm = () => {
     values.name === "" ? alert("name missed") : addOrEditActivitie(values);
 
     setValues({ ...initialStateValues });
+    console.log(values);
   };
 
   const getActivitieById = async (id) => {
